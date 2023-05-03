@@ -1,9 +1,27 @@
 <h1>コマンド一覧</h1>
 
-<ul>
-  <% @commands.each do |command| %>
-    <li><%= link_to command.id, command %> : <%= command.name %> &gt;<%= command.language %> &gt;<%= command.content %></li>
-  <% end %>
-</ul>
-<%== pagy_nav(@pagy) %>
-<%= link_to '新規コマンドの追加', new_command_path %>
+<% if @commands.any? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>コマンド</th>
+        <th>言語</th>
+        <th>内容</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @commands.each do |command| %>
+        <tr>
+          <td><%= link_to command.id, command %></td>
+          <td><%= command.name %></td>
+          <td><%= command.language %></td>
+          <td><%= command.content %></td>
+      <% end %>
+    </tbody>
+  </table>
+  <div>
+    <%== pagy_bootstrap_nav(@pagy) %>
+  </div>
+<% end %>  
+<%= link_to '新規コマンドの追加', new_command_path, class: "btn btn-primary" %>

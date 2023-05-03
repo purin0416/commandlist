@@ -1,21 +1,27 @@
 <%= form_with(model: command) do |f| %>
   <% if command.errors.any? %>
-    <div id="error_explanation">
-      <ul>
+    <div id="error_explanation" class="alert alert-warning">
+      <ul class="mb-0">
         <% command.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
-  <%= f.label :name, 'コマンド' %>
-  <%= f.text_field :name %>
+  <div class="mb-3">
+    <%= f.label :name, 'コマンド' %>
+    <%= f.text_field :name, class: 'form-control'  %> 
+  </div>
   
-  <%= f.label :language, '言語' %>
-  <%= f.text_field :language %>
+  <div class="mb-3">
+    <%= f.label :language, '言語' %>
+    <%= f.text_field :language, class: 'form-control'  %>
+  </div>
   
-  <%= f.label :content, '内容' %>
-  <%= f.text_field :content %>
-
-  <%= f.submit '追加' %>
+  <div class="mb-3">
+    <%= f.label :content, '内容' %>
+    <%= f.text_field :content, class: 'form-control'  %>
+  </div>
+  
+  <%= f.submit '追加', class: 'btn btn-primary' %>
 <% end %>

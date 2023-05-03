@@ -1,9 +1,23 @@
 <h1>id: <%= @command.id %> のコマンド詳細ページ</h1>
 
-<p>コマンド: <%= @command.name %></p>
-<p>言語: <%= @command.language %></p>
-<p>内容: <%= @command.content %></p>
+<table class="table table-bordered">
+  <tr>
+    <th>id</th>
+    <td><%= @command.id %></td>
+  </tr>
+  <tr>
+    <th>コマンド</th>
+    <td><%= @command.name %></td>
+  </tr>
+  <tr>
+    <th>言語</th>
+    <td><%= @command.language %></td>
+  </tr>
+  <tr>
+    <th>内容</th>
+    <td><%= @command.content %></td>
+  </tr>
+</table>
 
-<%= link_to '一覧に戻る', commands_path %>
-<%= link_to 'このコマンドを編集する', edit_command_path(@command) %>
-<%= link_to 'このコマンドを削除する', @command, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+<%= link_to 'このコマンドを編集する', edit_command_path(@command), class: 'btn btn-light' %>
+<%= link_to 'このコマンドを削除する', @command, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
