@@ -1,0 +1,8 @@
+<h1>コマンド一覧</h1>
+
+<ul>
+  <% @commands.each do |command| %>
+    <li><%= link_to command.id, command %> : <%= command.content %></li>
+  <% end %>
+</ul>
+<%= link_to '新規コマンドの追加', new_command_path %>

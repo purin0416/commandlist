@@ -1,0 +1,6 @@
+<%= form_with(model: command) do |f| %>
+  <%= f.label :content, 'コマンド' %>
+  <%= f.text_field :content %>
+
+  <%= f.submit '追加' %>
+<% end %>

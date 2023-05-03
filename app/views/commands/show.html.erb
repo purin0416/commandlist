@@ -1,0 +1,7 @@
+<h1>id: <%= @command.id %> のコマンド詳細ページ</h1>
+
+<p><%= @command.content %></p>
+
+<%= link_to '一覧に戻る', commands_path %>
+<%= link_to 'このコマンドを編集する', edit_command_path(@command) %>
+<%= link_to 'このコマンドを削除する', @command, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
