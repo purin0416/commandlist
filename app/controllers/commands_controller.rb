@@ -2,7 +2,7 @@ class CommandsController < ApplicationController
   before_action :set_command, only: [:show, :edit, :update, :destroy]
   
   def index
-    @commands =Command.all
+    @pagy,@commands = pagy(Command.all, items: 10)
   end
   
   def show
@@ -51,6 +51,6 @@ class CommandsController < ApplicationController
   end
   
   def command_params
-    params.require(:command).permit(:content)
+    params.require(:command).permit(:content, :name, :language)
   end
 end

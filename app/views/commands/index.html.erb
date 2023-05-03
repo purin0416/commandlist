@@ -2,7 +2,8 @@
 
 <ul>
   <% @commands.each do |command| %>
-    <li><%= link_to command.id, command %> : <%= command.content %></li>
+    <li><%= link_to command.id, command %> : <%= command.name %> &gt;<%= command.language %> &gt;<%= command.content %></li>
   <% end %>
 </ul>
+<%== pagy_nav(@pagy) %>
 <%= link_to '新規コマンドの追加', new_command_path %>

@@ -1,6 +1,8 @@
 <h1>id: <%= @command.id %> のコマンド詳細ページ</h1>
 
-<p><%= @command.content %></p>
+<p>コマンド: <%= @command.name %></p>
+<p>言語: <%= @command.language %></p>
+<p>内容: <%= @command.content %></p>
 
 <%= link_to '一覧に戻る', commands_path %>
 <%= link_to 'このコマンドを編集する', edit_command_path(@command) %>
