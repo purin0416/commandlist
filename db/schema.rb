@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_03_164359) do
+ActiveRecord::Schema.define(version: 2023_05_04_160902) do
 
   create_table "commands", charset: "utf8mb4", force: :cascade do |t|
     t.string "content"
@@ -18,6 +18,14 @@ ActiveRecord::Schema.define(version: 2023_05_03_164359) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.string "language"
+  end
+
+  create_table "users", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
