@@ -1,8 +1,9 @@
 class CommandsController < ApplicationController
-  before_action :set_command, only: [:show, :edit, :update, :destroy]
+  before_action :require_user_logged_in
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
   
   def index
-    @pagy,@commands = pagy(Command.all, items: 10)
+    @pagy,@commands = pagy(current_user.commands.order(:id), items: 10)
   end
   
   def show
@@ -13,7 +14,7 @@ class CommandsController < ApplicationController
   end
 
   def create
-    @command = Command.new(command_params)
+    @command = current_user.commands.build(command_params)
     
     if @command.save
       flash[:success] = 'Command が正常に追加されました'
@@ -46,11 +47,14 @@ class CommandsController < ApplicationController
   
   private
   
-  def set_command
-    @command = Command.find(params[:id])
-  end
-  
   def command_params
     params.require(:command).permit(:content, :name, :language)
   end
+  
+  def correct_user
+    @command = current_user.commands.find_by(id: params[:id])
+    unless @command
+      redirect_to root_url
+    end
+  end  
 end
